@@ -9,32 +9,27 @@
 
   <link rel="stylesheet" href="style.css">
 
-  <!-- Font Awesome Icons -->
   <link rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
 
-  <!-- Navigation -->
+  <!-- NAVBAR -->
   <nav class="navbar">
 
     <a href="#home" class="nav-logo">
       MAG<span>.</span>CREATIVE
     </a>
 
-    <!-- Desktop Navigation -->
     <div class="nav-links">
-
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#contact">Contact</a>
-
     </div>
 
-    <!-- Instagram -->
     <a
       href="https://www.instagram.com/m_a_g.creative?stkn=MW40bDU2eG13djdtNg=="
       target="_blank"
@@ -45,7 +40,6 @@
 
     </a>
 
-    <!-- Hamburger Button -->
     <button
       class="hamburger"
       id="hamburger"
@@ -60,7 +54,7 @@
   </nav>
 
 
-  <!-- Mobile Menu -->
+  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
 
     <a href="#home">Home</a>
@@ -82,7 +76,7 @@
   </div>
 
 
-  <!-- Hero Section -->
+  <!-- HERO -->
   <section id="home" class="hero">
 
     <div class="hero-content">
@@ -135,7 +129,7 @@
   </section>
 
 
-  <!-- About Section -->
+  <!-- ABOUT -->
   <section id="about" class="about">
 
     <div class="section-label">
@@ -146,7 +140,6 @@
       Turning Ideas Into
       <span>Creative Visuals.</span>
     </h2>
-
 
     <div class="about-grid">
 
@@ -163,7 +156,6 @@
         </p>
 
       </div>
-
 
       <div class="about-stats">
 
@@ -189,7 +181,7 @@
   </section>
 
 
-  <!-- Services Section -->
+  <!-- SERVICES -->
   <section id="services" class="services">
 
     <div class="section-label">
@@ -201,90 +193,60 @@
       <span>Create For You.</span>
     </h2>
 
-
     <div class="services-grid">
 
       <div class="service-card">
-
         <div class="service-number">01</div>
-
         <h3>Logo Design</h3>
-
         <p>
           Modern and professional logo designs
           that represent your brand identity.
         </p>
-
       </div>
 
-
       <div class="service-card">
-
         <div class="service-number">02</div>
-
         <h3>AI Creative Design</h3>
-
         <p>
           Creative visuals and concepts designed
           with modern AI tools.
         </p>
-
       </div>
 
-
       <div class="service-card">
-
         <div class="service-number">03</div>
-
         <h3>Advertising Posters</h3>
-
         <p>
           Eye-catching posters designed for
           businesses and social media campaigns.
         </p>
-
       </div>
 
-
       <div class="service-card">
-
         <div class="service-number">04</div>
-
         <h3>Social Media Design</h3>
-
         <p>
           Professional Instagram posts,
           advertisements and promotional graphics.
         </p>
-
       </div>
 
-
       <div class="service-card">
-
         <div class="service-number">05</div>
-
         <h3>Thumbnail Design</h3>
-
         <p>
           Click-worthy thumbnails designed
           to grab attention instantly.
         </p>
-
       </div>
 
-
       <div class="service-card highlight-card">
-
         <div class="service-number">06</div>
-
         <h3>Custom Projects</h3>
-
         <p>
           Have a unique idea? Let's create
           something amazing together.
         </p>
-
       </div>
 
     </div>
@@ -292,7 +254,7 @@
   </section>
 
 
-  <!-- Portfolio Section -->
+  <!-- PORTFOLIO -->
   <section id="portfolio" class="portfolio">
 
     <div class="section-label">
@@ -304,44 +266,140 @@
       <span>Creative Projects.</span>
     </h2>
 
-
     <div class="portfolio-grid">
 
-      <div class="portfolio-card">
 
-        <div class="portfolio-image placeholder">
-          PROJECT 01
+      <!-- PROJECT 01 -->
+      <div
+        class="portfolio-card"
+        role="button"
+        tabindex="0"
+        aria-label="Project 01 - Tap to view design">
+
+        <div class="portfolio-card-inner">
+
+          <!-- FRONT -->
+          <div class="portfolio-face portfolio-front">
+
+            <div class="portfolio-image portfolio-placeholder">
+              PROJECT 01
+            </div>
+
+            <h3>Poster Design</h3>
+
+            <p>Advertising Creative</p>
+
+            <span class="flip-hint">
+              TAP TO VIEW
+            </span>
+
+          </div>
+
+          <!-- BACK -->
+          <div class="portfolio-face portfolio-back">
+
+            <img
+              src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=900"
+              alt="Project 01 sample design"
+              loading="lazy">
+
+            <span class="back-label">
+              PROJECT 01 • SAMPLE
+            </span>
+
+          </div>
+
         </div>
-
-        <h3>Poster Design</h3>
-
-        <p>Advertising Creative</p>
 
       </div>
 
 
-      <div class="portfolio-card">
+      <!-- PROJECT 02 -->
+      <div
+        class="portfolio-card"
+        role="button"
+        tabindex="0"
+        aria-label="Project 02 - Tap to view design">
 
-        <div class="portfolio-image placeholder">
-          PROJECT 02
+        <div class="portfolio-card-inner">
+
+          <!-- FRONT -->
+          <div class="portfolio-face portfolio-front">
+
+            <div class="portfolio-image portfolio-placeholder">
+              PROJECT 02
+            </div>
+
+            <h3>Logo Design</h3>
+
+            <p>Brand Identity</p>
+
+            <span class="flip-hint">
+              TAP TO VIEW
+            </span>
+
+          </div>
+
+          <!-- BACK -->
+          <div class="portfolio-face portfolio-back">
+
+            <img
+              src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=900"
+              alt="Project 02 sample design"
+              loading="lazy">
+
+            <span class="back-label">
+              PROJECT 02 • SAMPLE
+            </span>
+
+          </div>
+
         </div>
-
-        <h3>Logo Design</h3>
-
-        <p>Brand Identity</p>
 
       </div>
 
 
-      <div class="portfolio-card">
+      <!-- PROJECT 03 -->
+      <div
+        class="portfolio-card"
+        role="button"
+        tabindex="0"
+        aria-label="Project 03 - Tap to view design">
 
-        <div class="portfolio-image placeholder">
-          PROJECT 03
+        <div class="portfolio-card-inner">
+
+          <!-- FRONT -->
+          <div class="portfolio-face portfolio-front">
+
+            <div class="portfolio-image portfolio-placeholder">
+              PROJECT 03
+            </div>
+
+            <h3>Social Media</h3>
+
+            <p>Instagram Creative</p>
+
+            <span class="flip-hint">
+              TAP TO VIEW
+            </span>
+
+          </div>
+
+          <!-- BACK -->
+          <div class="portfolio-face portfolio-back">
+
+            <img
+              src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900"
+              alt="Project 03 sample design"
+              loading="lazy">
+
+            <span class="back-label">
+              PROJECT 03 • SAMPLE
+            </span>
+
+          </div>
+
         </div>
-
-        <h3>Social Media</h3>
-
-        <p>Instagram Creative</p>
 
       </div>
 
@@ -350,7 +408,7 @@
   </section>
 
 
-  <!-- Contact Section -->
+  <!-- CONTACT -->
   <section id="contact" class="contact">
 
     <div class="contact-content">
@@ -387,7 +445,7 @@
   </section>
 
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
 
     <div class="footer-logo">
@@ -414,4 +472,4 @@
   <script src="script.js"></script>
 
 </body>
-</html>
+          </html>
