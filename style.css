@@ -1,0 +1,323 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+
+/* =========================
+   GENERAL PAGE
+========================= */
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  display: none;
+  position: relative;
+}
+
+.page.active {
+  display: flex;
+}
+
+
+/* =========================
+   HOME PAGE
+========================= */
+
+#home {
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.home-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* MAG CREATIVE */
+
+#logo {
+  font-size: 48px;
+  font-weight: bold;
+  color: #ffd400;
+  transition: color 0.5s ease;
+  margin-bottom: 10px;
+}
+
+
+/* TAGLINE */
+
+.tagline {
+  font-size: 18px;
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+
+/* ABOUT BUTTON */
+
+#aboutBtn {
+  padding: 15px 40px;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#aboutBtn:hover {
+  background: white;
+  color: black;
+}
+
+
+/* =========================
+   ABOUT PAGE
+========================= */
+
+#about {
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+}
+
+
+/* =========================
+   BACKGROUND SLIDESHOW
+========================= */
+
+.background-slideshow {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.slide {
+  position: absolute;
+  inset: -20px;
+  background-size: cover;
+  background-position: center;
+  filter: blur(10px);
+  opacity: 0;
+  animation: slideshow 16s infinite;
+}
+
+
+/* DESIGN IMAGES */
+
+.slide1 {
+  background-image: url("https://images.unsplash.com/photo-1558655146-d09347e92766?w=1600");
+}
+
+.slide2 {
+  background-image: url("https://images.unsplash.com/photo-1559028012-481c04fa702d?w=1600");
+  animation-delay: 4s;
+}
+
+.slide3 {
+  background-image: url("https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1600");
+  animation-delay: 8s;
+}
+
+.slide4 {
+  background-image: url("https://images.unsplash.com/photo-1542744094-3a31f272c490?w=1600");
+  animation-delay: 12s;
+}
+
+
+@keyframes slideshow {
+
+  0%,
+  100% {
+    opacity: 0;
+  }
+
+  10%,
+  25% {
+    opacity: 0.35;
+  }
+
+  35% {
+    opacity: 0;
+  }
+}
+
+
+/* DARK OVERLAY */
+
+.about-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  z-index: 1;
+}
+
+
+/* =========================
+   ABOUT CONTENT
+========================= */
+
+.about-content {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 700px;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+
+/* ABOUT ME HEADING */
+
+#aboutTitle {
+  font-size: 48px;
+  color: #ffd400;
+  margin-bottom: 25px;
+  transition: color 0.5s ease;
+}
+
+
+/* PARAGRAPHS */
+
+.about-content p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin: 15px 0;
+  color: white;
+}
+
+.about-content b {
+  color: #ffd400;
+}
+
+
+/* =========================
+   SEE MY WORK BUTTON
+========================= */
+
+#workBtn {
+  padding: 14px 32px;
+  margin-top: 25px;
+  background: white;
+  color: black;
+  border: 2px solid white;
+  border-radius: 8px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+
+/* TAP KE BAAD BLACK */
+
+#workBtn.active {
+  background: black;
+  color: white;
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+#backBtn {
+  display: block;
+  padding: 11px 25px;
+  margin: 15px auto;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+/* =========================
+   SHAKE EFFECT
+========================= */
+
+.shake {
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-8px);
+  }
+
+  40% {
+    transform: translateX(8px);
+  }
+
+  60% {
+    transform: translateX(-6px);
+  }
+
+  80% {
+    transform: translateX(6px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  #logo {
+    font-size: 38px;
+    white-space: nowrap;
+  }
+
+  .tagline {
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+
+  #aboutBtn {
+    padding: 14px 35px;
+    font-size: 17px;
+  }
+
+  #aboutTitle {
+    font-size: 40px;
+  }
+
+  .about-content {
+    width: 94%;
+    padding: 60px 10px;
+  }
+
+  .about-content p {
+    font-size: 16px;
+  }
+
+}
