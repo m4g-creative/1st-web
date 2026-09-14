@@ -39,13 +39,17 @@ window.addEventListener(
   () => {
 
     if (window.scrollY > 50) {
+
       navbar.classList.add(
         "navbar-scrolled"
       );
+
     } else {
+
       navbar.classList.remove(
         "navbar-scrolled"
       );
+
     }
 
   }
@@ -74,7 +78,6 @@ hamburger.addEventListener(
 
 /* =========================
    CLOSE MOBILE MENU
-   AFTER CLICK
 ========================= */
 
 mobileLinks.forEach(link => {
@@ -105,8 +108,6 @@ allMenuLinks.forEach(link => {
 
   const href =
     link.getAttribute("href");
-
-  /* Instagram links skip */
 
   if (
     !href ||
@@ -222,8 +223,6 @@ function revealOnScroll() {
         .bottom;
 
 
-    /* Element screen mein aaye */
-
     if (
       elementTop <
       windowHeight - 80 &&
@@ -234,12 +233,7 @@ function revealOnScroll() {
         "show"
       );
 
-    }
-
-
-    /* Element screen se bahar jaye */
-
-    else {
+    } else {
 
       element.classList.remove(
         "show"
@@ -270,7 +264,7 @@ revealOnScroll();
 
 
 /* =========================
-   PORTFOLIO CARD CLICK
+   PORTFOLIO FLIP CARDS
 ========================= */
 
 const portfolioCards =
@@ -280,6 +274,9 @@ const portfolioCards =
 
 
 portfolioCards.forEach(card => {
+
+
+  /* CLICK / TOUCH */
 
   card.addEventListener(
     "click",
@@ -291,6 +288,30 @@ portfolioCards.forEach(card => {
 
     }
   );
+
+
+  /* KEYBOARD SUPPORT */
+
+  card.addEventListener(
+    "keydown",
+    (event) => {
+
+      if (
+        event.key === "Enter" ||
+        event.key === " "
+      ) {
+
+        event.preventDefault();
+
+        card.classList.toggle(
+          "portfolio-active"
+        );
+
+      }
+
+    }
+  );
+
 
 });
 
