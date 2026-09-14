@@ -1,90 +1,170 @@
-const logo = document.getElementById("logo");
-const aboutTitle = document.getElementById("aboutTitle");
-
-const aboutBtn = document.getElementById("aboutBtn");
-const workBtn = document.getElementById("workBtn");
-const backBtn = document.getElementById("backBtn");
-
-const home = document.getElementById("home");
-const about = document.getElementById("about");
-
-
 /* =========================
-   MAG CREATIVE COLOR
+MAG CREATIVE PORTFOLIO
+SCRIPT.JS
 ========================= */
 
-let yellow = true;
-
-setInterval(() => {
-
-  if (yellow) {
-    logo.style.color = "white";
-    aboutTitle.style.color = "white";
-  } else {
-    logo.style.color = "#ffd400";
-    aboutTitle.style.color = "#ffd400";
-  }
-
-  yellow = !yellow;
-
-}, 1000);
-
-
 /* =========================
-   ABOUT ME BUTTON
+NAVBAR SCROLL EFFECT
 ========================= */
 
-aboutBtn.addEventListener("click", () => {
+const navbar = document.querySelector(".navbar");
 
-  aboutBtn.classList.add("shake");
+window.addEventListener("scroll", () => {
 
-  setTimeout(() => {
-    aboutBtn.classList.remove("shake");
-  }, 500);
-
-  setTimeout(() => {
-
-    home.classList.remove("active");
-    about.classList.add("active");
-
-  }, 500);
+if (window.scrollY > 50) {
+navbar.classList.add("navbar-scrolled");
+} else {
+navbar.classList.remove("navbar-scrolled");
+}
 
 });
 
-
 /* =========================
-   SEE MY WORK
+SMOOTH SCROLL
 ========================= */
 
-workBtn.addEventListener("click", () => {
+const navLinks = document.querySelectorAll(".nav-links a");
 
-  workBtn.classList.add("shake");
-  workBtn.classList.toggle("active");
+navLinks.forEach(link => {
 
-  setTimeout(() => {
-    workBtn.classList.remove("shake");
-  }, 500);
+link.addEventListener("click", function(e) {
+
+e.preventDefault();
+
+const targetId = this.getAttribute("href");
+
+document
+  .querySelector(targetId)
+  .scrollIntoView({
+    behavior: "smooth"
+  });
 
 });
 
+});
 
 /* =========================
-   BACK BUTTON
+ACTIVE NAVIGATION LINK
 ========================= */
 
-backBtn.addEventListener("click", () => {
+const sections = document.querySelectorAll("section");
 
-  backBtn.classList.add("shake");
+window.addEventListener("scroll", () => {
 
-  setTimeout(() => {
-    backBtn.classList.remove("shake");
-  }, 500);
+let current = "";
 
-  setTimeout(() => {
+sections.forEach(section => {
 
-    about.classList.remove("active");
-    home.classList.add("active");
+const sectionTop =
+  section.offsetTop - 150;
 
-  }, 500);
+const sectionHeight =
+  section.clientHeight;
+
+if (
+  pageYOffset >= sectionTop &&
+  pageYOffset < sectionTop + sectionHeight
+) {
+
+  current = section.getAttribute("id");
+
+}
 
 });
+
+navLinks.forEach(link => {
+
+link.classList.remove("active-link");
+
+if (
+  link.getAttribute("href") ===
+  "#" + current
+) {
+
+  link.classList.add("active-link");
+
+}
+
+});
+
+});
+
+/* =========================
+SCROLL REVEAL ANIMATION
+========================= */
+
+const revealElements =
+document.querySelectorAll(
+".service-card, .portfolio-card, .stat-card, .about-text"
+);
+
+const revealOnScroll = () => {
+
+const windowHeight =
+window.innerHeight;
+
+revealElements.forEach(element => {
+
+const elementTop =
+  element.getBoundingClientRect().top;
+
+
+if (
+  elementTop <
+  windowHeight - 80
+) {
+
+  element.classList.add("show");
+
+}
+
+});
+
+};
+
+window.addEventListener(
+"scroll",
+revealOnScroll
+);
+
+revealOnScroll();
+
+/* =========================
+PORTFOLIO CARD CLICK
+========================= */
+
+const portfolioCards =
+document.querySelectorAll(
+".portfolio-card"
+);
+
+portfolioCards.forEach(card => {
+
+card.addEventListener(
+"click",
+() => {
+
+  card.classList.toggle(
+    "portfolio-active"
+  );
+
+}
+
+);
+
+});
+
+/* =========================
+PAGE LOAD EFFECT
+========================= */
+
+window.addEventListener(
+"load",
+() => {
+
+document.body.classList.add(
+  "loaded"
+);
+
+}
+);
