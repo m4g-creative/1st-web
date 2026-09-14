@@ -7,7 +7,8 @@
    ELEMENTS
 ========================= */
 
-const navbar = document.querySelector(".navbar");
+const navbar =
+  document.querySelector(".navbar");
 
 const hamburger =
   document.getElementById("hamburger");
@@ -34,46 +35,36 @@ const sections =
    NAVBAR SCROLL EFFECT
 ========================= */
 
-window.addEventListener(
-  "scroll",
-  () => {
+window.addEventListener("scroll", () => {
 
-    if (window.scrollY > 50) {
+  if (window.scrollY > 50) {
 
-      navbar.classList.add(
-        "navbar-scrolled"
-      );
+    navbar.classList.add(
+      "navbar-scrolled"
+    );
 
-    } else {
+  } else {
 
-      navbar.classList.remove(
-        "navbar-scrolled"
-      );
-
-    }
+    navbar.classList.remove(
+      "navbar-scrolled"
+    );
 
   }
-);
+
+});
 
 
 /* =========================
    HAMBURGER MENU
 ========================= */
 
-hamburger.addEventListener(
-  "click",
-  () => {
+hamburger.addEventListener("click", () => {
 
-    hamburger.classList.toggle(
-      "active"
-    );
+  hamburger.classList.toggle("active");
 
-    mobileMenu.classList.toggle(
-      "active"
-    );
+  mobileMenu.classList.toggle("active");
 
-  }
-);
+});
 
 
 /* =========================
@@ -82,20 +73,13 @@ hamburger.addEventListener(
 
 mobileLinks.forEach(link => {
 
-  link.addEventListener(
-    "click",
-    () => {
+  link.addEventListener("click", () => {
 
-      hamburger.classList.remove(
-        "active"
-      );
+    hamburger.classList.remove("active");
 
-      mobileMenu.classList.remove(
-        "active"
-      );
+    mobileMenu.classList.remove("active");
 
-    }
-  );
+  });
 
 });
 
@@ -118,7 +102,7 @@ allMenuLinks.forEach(link => {
 
   link.addEventListener(
     "click",
-    function(e) {
+    function (e) {
 
       e.preventDefault();
 
@@ -128,7 +112,8 @@ allMenuLinks.forEach(link => {
       if (target) {
 
         target.scrollIntoView({
-          behavior: "smooth"
+          behavior: "smooth",
+          block: "start"
         });
 
       }
@@ -143,60 +128,56 @@ allMenuLinks.forEach(link => {
    ACTIVE NAV LINK
 ========================= */
 
-window.addEventListener(
-  "scroll",
-  () => {
+window.addEventListener("scroll", () => {
 
-    let current = "";
+  let current = "";
 
-    sections.forEach(section => {
+  sections.forEach(section => {
 
-      const sectionTop =
-        section.offsetTop - 150;
+    const sectionTop =
+      section.offsetTop - 150;
 
-      const sectionHeight =
-        section.offsetHeight;
+    const sectionHeight =
+      section.offsetHeight;
 
-      if (
-        window.scrollY >= sectionTop &&
-        window.scrollY <
-        sectionTop + sectionHeight
-      ) {
+    if (
+      window.scrollY >= sectionTop &&
+      window.scrollY <
+      sectionTop + sectionHeight
+    ) {
 
-        current =
-          section.getAttribute("id");
+      current =
+        section.getAttribute("id");
 
-      }
+    }
 
-    });
+  });
 
 
-    navLinks.forEach(link => {
+  navLinks.forEach(link => {
 
-      link.classList.remove(
+    link.classList.remove(
+      "active-link"
+    );
+
+    if (
+      link.getAttribute("href") ===
+      "#" + current
+    ) {
+
+      link.classList.add(
         "active-link"
       );
 
-      if (
-        link.getAttribute("href") ===
-        "#" + current
-      ) {
+    }
 
-        link.classList.add(
-          "active-link"
-        );
+  });
 
-      }
-
-    });
-
-  }
-);
+});
 
 
 /* =========================
    SCROLL REVEAL
-   REPEAT ANIMATION
 ========================= */
 
 const revealElements =
@@ -212,16 +193,19 @@ function revealOnScroll() {
 
   revealElements.forEach(element => {
 
+    const rect =
+      element.getBoundingClientRect();
+
     const elementTop =
-      element
-        .getBoundingClientRect()
-        .top;
+      rect.top;
 
     const elementBottom =
-      element
-        .getBoundingClientRect()
-        .bottom;
+      rect.bottom;
 
+
+    /*
+      Element screen mein aaye
+    */
 
     if (
       elementTop <
@@ -229,15 +213,17 @@ function revealOnScroll() {
       elementBottom > 80
     ) {
 
-      element.classList.add(
-        "show"
-      );
+      element.classList.add("show");
 
-    } else {
+    }
 
-      element.classList.remove(
-        "show"
-      );
+    /*
+      Element screen se bahar jaye
+    */
+
+    else {
+
+      element.classList.remove("show");
 
     }
 
@@ -251,20 +237,19 @@ window.addEventListener(
   revealOnScroll
 );
 
-
 window.addEventListener(
   "resize",
   revealOnScroll
 );
 
 
-/* Run once on load */
+/* Run on page load */
 
 revealOnScroll();
 
 
 /* =========================
-   PORTFOLIO FLIP CARDS
+   PORTFOLIO CARD FLIP
 ========================= */
 
 const portfolioCards =
@@ -274,9 +259,6 @@ const portfolioCards =
 
 
 portfolioCards.forEach(card => {
-
-
-  /* CLICK / TOUCH */
 
   card.addEventListener(
     "click",
@@ -288,30 +270,6 @@ portfolioCards.forEach(card => {
 
     }
   );
-
-
-  /* KEYBOARD SUPPORT */
-
-  card.addEventListener(
-    "keydown",
-    (event) => {
-
-      if (
-        event.key === "Enter" ||
-        event.key === " "
-      ) {
-
-        event.preventDefault();
-
-        card.classList.toggle(
-          "portfolio-active"
-        );
-
-      }
-
-    }
-  );
-
 
 });
 
