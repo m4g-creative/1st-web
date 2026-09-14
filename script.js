@@ -1,170 +1,313 @@
 /* =========================
-MAG CREATIVE PORTFOLIO
-SCRIPT.JS
+   MAG CREATIVE PORTFOLIO
 ========================= */
 
+
 /* =========================
-NAVBAR SCROLL EFFECT
+   ELEMENTS
 ========================= */
 
 const navbar = document.querySelector(".navbar");
 
-window.addEventListener("scroll", () => {
+const hamburger =
+  document.getElementById("hamburger");
 
-if (window.scrollY > 50) {
-navbar.classList.add("navbar-scrolled");
-} else {
-navbar.classList.remove("navbar-scrolled");
-}
+const mobileMenu =
+  document.getElementById("mobileMenu");
 
-});
+const navLinks =
+  document.querySelectorAll(".nav-links a");
+
+const mobileLinks =
+  document.querySelectorAll(".mobile-menu a");
+
+const allMenuLinks =
+  document.querySelectorAll(
+    ".nav-links a, .mobile-menu a"
+  );
+
+const sections =
+  document.querySelectorAll("section");
+
 
 /* =========================
-SMOOTH SCROLL
+   NAVBAR SCROLL EFFECT
 ========================= */
 
-const navLinks = document.querySelectorAll(".nav-links a");
+window.addEventListener(
+  "scroll",
+  () => {
 
-navLinks.forEach(link => {
+    if (window.scrollY > 50) {
+      navbar.classList.add(
+        "navbar-scrolled"
+      );
+    } else {
+      navbar.classList.remove(
+        "navbar-scrolled"
+      );
+    }
 
-link.addEventListener("click", function(e) {
+  }
+);
 
-e.preventDefault();
-
-const targetId = this.getAttribute("href");
-
-document
-  .querySelector(targetId)
-  .scrollIntoView({
-    behavior: "smooth"
-  });
-
-});
-
-});
 
 /* =========================
-ACTIVE NAVIGATION LINK
+   HAMBURGER MENU
 ========================= */
 
-const sections = document.querySelectorAll("section");
+hamburger.addEventListener(
+  "click",
+  () => {
 
-window.addEventListener("scroll", () => {
+    hamburger.classList.toggle(
+      "active"
+    );
 
-let current = "";
+    mobileMenu.classList.toggle(
+      "active"
+    );
 
-sections.forEach(section => {
+  }
+);
 
-const sectionTop =
-  section.offsetTop - 150;
-
-const sectionHeight =
-  section.clientHeight;
-
-if (
-  pageYOffset >= sectionTop &&
-  pageYOffset < sectionTop + sectionHeight
-) {
-
-  current = section.getAttribute("id");
-
-}
-
-});
-
-navLinks.forEach(link => {
-
-link.classList.remove("active-link");
-
-if (
-  link.getAttribute("href") ===
-  "#" + current
-) {
-
-  link.classList.add("active-link");
-
-}
-
-});
-
-});
 
 /* =========================
-SCROLL REVEAL ANIMATION
+   CLOSE MOBILE MENU
+   AFTER CLICK
+========================= */
+
+mobileLinks.forEach(link => {
+
+  link.addEventListener(
+    "click",
+    () => {
+
+      hamburger.classList.remove(
+        "active"
+      );
+
+      mobileMenu.classList.remove(
+        "active"
+      );
+
+    }
+  );
+
+});
+
+
+/* =========================
+   SMOOTH SCROLL
+========================= */
+
+allMenuLinks.forEach(link => {
+
+  const href =
+    link.getAttribute("href");
+
+  /* Instagram links skip */
+  if (
+    !href ||
+    !href.startsWith("#")
+  ) {
+    return;
+  }
+
+  link.addEventListener(
+    "click",
+    function(e) {
+
+      e.preventDefault();
+
+      const target =
+        document.querySelector(
+          href
+        );
+
+      if (target) {
+
+        target.scrollIntoView({
+          behavior: "smooth"
+        });
+
+      }
+
+    }
+  );
+
+});
+
+
+/* =========================
+   ACTIVE NAV LINK
+========================= */
+
+window.addEventListener(
+  "scroll",
+  () => {
+
+    let current = "";
+
+    sections.forEach(section => {
+
+      const sectionTop =
+        section.offsetTop - 150;
+
+      const sectionHeight =
+        section.offsetHeight;
+
+      if (
+        window.scrollY >= sectionTop &&
+        window.scrollY <
+        sectionTop + sectionHeight
+      ) {
+
+        current =
+          section.getAttribute("id");
+
+      }
+
+    });
+
+
+    navLinks.forEach(link => {
+
+      link.classList.remove(
+        "active-link"
+      );
+
+      if (
+        link.getAttribute("href") ===
+        "#" + current
+      ) {
+
+        link.classList.add(
+          "active-link"
+        );
+
+      }
+
+    });
+
+  }
+);
+
+
+/* =========================
+   SCROLL REVEAL
 ========================= */
 
 const revealElements =
-document.querySelectorAll(
-".service-card, .portfolio-card, .stat-card, .about-text"
-);
-
-const revealOnScroll = () => {
-
-const windowHeight =
-window.innerHeight;
-
-revealElements.forEach(element => {
-
-const elementTop =
-  element.getBoundingClientRect().top;
+  document.querySelectorAll(
+    ".service-card, .portfolio-card, .stat-card, .about-text"
+  );
 
 
-if (
-  elementTop <
-  windowHeight - 80
-) {
+function revealOnScroll() {
 
-  element.classList.add("show");
+  const windowHeight =
+    window.innerHeight;
+
+  revealElements.forEach(element => {
+
+    const elementTop =
+      element
+        .getBoundingClientRect()
+        .top;
+
+    if (
+      elementTop <
+      windowHeight - 80
+    ) {
+
+      element.classList.add(
+        "show"
+      );
+
+    }
+
+  });
 
 }
 
-});
-
-};
 
 window.addEventListener(
-"scroll",
-revealOnScroll
+  "scroll",
+  revealOnScroll
 );
+
+
+/* Run once on load */
 
 revealOnScroll();
 
+
 /* =========================
-PORTFOLIO CARD CLICK
+   PORTFOLIO CARD CLICK
 ========================= */
 
 const portfolioCards =
-document.querySelectorAll(
-".portfolio-card"
-);
+  document.querySelectorAll(
+    ".portfolio-card"
+  );
+
 
 portfolioCards.forEach(card => {
 
-card.addEventListener(
-"click",
-() => {
+  card.addEventListener(
+    "click",
+    () => {
 
-  card.classList.toggle(
-    "portfolio-active"
+      card.classList.toggle(
+        "portfolio-active"
+      );
+
+    }
   );
-
-}
-
-);
 
 });
 
+
 /* =========================
-PAGE LOAD EFFECT
+   CLOSE MENU ON RESIZE
 ========================= */
 
 window.addEventListener(
-"load",
-() => {
+  "resize",
+  () => {
 
-document.body.classList.add(
-  "loaded"
+    if (
+      window.innerWidth > 900
+    ) {
+
+      hamburger.classList.remove(
+        "active"
+      );
+
+      mobileMenu.classList.remove(
+        "active"
+      );
+
+    }
+
+  }
 );
 
-}
+
+/* =========================
+   PAGE LOAD
+========================= */
+
+window.addEventListener(
+  "load",
+  () => {
+
+    document.body.classList.add(
+      "loaded"
+    );
+
+    revealOnScroll();
+
+  }
 );
