@@ -107,6 +107,7 @@ allMenuLinks.forEach(link => {
     link.getAttribute("href");
 
   /* Instagram links skip */
+
   if (
     !href ||
     !href.startsWith("#")
@@ -121,9 +122,7 @@ allMenuLinks.forEach(link => {
       e.preventDefault();
 
       const target =
-        document.querySelector(
-          href
-        );
+        document.querySelector(href);
 
       if (target) {
 
@@ -196,6 +195,7 @@ window.addEventListener(
 
 /* =========================
    SCROLL REVEAL
+   REPEAT ANIMATION
 ========================= */
 
 const revealElements =
@@ -216,12 +216,32 @@ function revealOnScroll() {
         .getBoundingClientRect()
         .top;
 
+    const elementBottom =
+      element
+        .getBoundingClientRect()
+        .bottom;
+
+
+    /* Element screen mein aaye */
+
     if (
       elementTop <
-      windowHeight - 80
+      windowHeight - 80 &&
+      elementBottom > 80
     ) {
 
       element.classList.add(
+        "show"
+      );
+
+    }
+
+
+    /* Element screen se bahar jaye */
+
+    else {
+
+      element.classList.remove(
         "show"
       );
 
@@ -234,6 +254,12 @@ function revealOnScroll() {
 
 window.addEventListener(
   "scroll",
+  revealOnScroll
+);
+
+
+window.addEventListener(
+  "resize",
   revealOnScroll
 );
 
